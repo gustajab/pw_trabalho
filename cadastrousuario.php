@@ -27,18 +27,25 @@ if(empty($_POST['email'])) {
 }
 if(empty($_POST['senha'])) {
     echo "Por favor, preencha o campo Senha.";
-} else {
-    // Insere as informações do usuário no banco de dados
-    $sql = "INSERT INTO usuarios (nome, email, senha)
-            VALUES ('$nome', '$email', '$senha')";
+} 
+ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Usuário cadastrado com sucesso";
-    } else {
-        echo "Erro ao cadastrar usuário: " . mysqli_error($conn);
+    // passo 3: preparar a instrução SQL
+    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senha);
+
+    // passo 4: executar a instrução SQL
+    try {
+        $stmt->execute();
+        echo "Registro inserido com sucesso!";
+    } catch(PDOException $e) {
+        echo "Erro ao inserir registro: " . $e->getMessage();
     }
 }
 
-// Fecha a conexão com o banco de dados
-mysqli_close($conn);
 ?>

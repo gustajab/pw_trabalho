@@ -18,7 +18,7 @@ USE `gerenciamento_de_docs` ;
 -- Table `gerenciamento_de_docs`.`usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`usuarios` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- Table `gerenciamento_de_docs`.`documentos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`documentos` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `data_upload` DATE NOT NULL,
   `usuarios_id` INT NOT NULL,
