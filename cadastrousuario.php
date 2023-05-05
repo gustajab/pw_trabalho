@@ -47,6 +47,6 @@ if(empty($_POST['senha'])) {
         echo "Erro ao inserir registro: " . $e->getMessage();
     }
 }
-header('location: index.html');
+header('location: login.php');
 die;
 ?>

@@ -1,4 +1,5 @@
 <?php
+require('pdo.inc.php');
 // conectar ao banco de dados
 $servername = "localhost";
 $username = "root";
@@ -32,6 +33,8 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
             session_start();
             $_SESSION['nome'] = $result['nome'];
             echo "Login bem-sucedido!";
+            header('location: templates/listagem.html');
+    die;
         } else {
             echo "Login inválido.";
         }
@@ -39,4 +42,10 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
         echo "Erro ao verificar login: " . $e->getMessage();
     }
 }
+    
+    
+   
+ 
+
+
 ?>

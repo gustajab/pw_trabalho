@@ -1,6 +1,6 @@
 {% include "inc/head.html" %}
 
-    <div class="main">
+
 
         <!-- Sign up form -->
         
@@ -9,24 +9,17 @@
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="cadastro.php" class="signup-image-link">Criar uma conta</a>
-                    </div>
+                    
 
                     <div class="signin-form">
-                        <h2 class="form-title">Login</h2>
-                        <form method="POST" class="register-form" id="login-form" action="verifica_login.php">
+                        <h2 class="form-title">Adicionar Documento</h2>
+                        <form method="POST" class="register-form" id="login-form" action="#" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="nome" id="nome" placeholder="Nome"/>
+                                <input type="file" name="arquivo" id="arquivo" placeholder="Arquivo"/>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="senha" id="senha" placeholder="Senha"/>
-                            </div>
-                           
+                            
                             <div class="form-group form-button">
                                 <input type="submit" name="login" id="login" class="form-submit" value="Login"/>
                             </div>
@@ -42,4 +35,4 @@
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
-   {% include "inc/foot.html" %}
+    {% include "inc/foot.html" %}
