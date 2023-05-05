@@ -33,7 +33,7 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
             $_SESSION['nome'] = $result['nome'];
             echo "Login bem-sucedido!";
         } else {
-            echo "Credenciais de login inválidas.";
+            echo "Login inválido.";
         }
     } catch(PDOException $e) {
         echo "Erro ao verificar login: " . $e->getMessage();
