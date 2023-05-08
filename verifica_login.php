@@ -33,7 +33,7 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
             session_start();
             $_SESSION['nome'] = $result['nome'];
             echo "Login bem-sucedido!";
-            header('location: templates/listagem.html');
+            header('location: listagem.php');
     die;
         } else {
             echo "Login inválido.";
