@@ -3,16 +3,33 @@
 require('twig_carregar.php');
 require('func/sanitize_filename.php');
 require('func/verifica_nome_arquivo.php');
+require('verifica_sessao.php');
 
-session_start();
 
-// Verifique se a sessão existe e se contém as informações necessárias
-if (!isset($_SESSION['nome'])) {
-    // Se o usuário não estiver autenticado, redirecione para a página de login
-    header('Location: login.php');
-    exit();
-}
-
+if(isset($_POST["enviar"])) {
+    $arquivo = $_FILES["arquivo"];
+  
+    // Verifica se o arquivo é válido
+    if ($arquivo["error"] == UPLOAD_ERR_OK) {
+      // Define o diretório onde o arquivo será armazenado
+      $diretorio = "uploads/";
+      $caminho = $diretorio . $arquivo["name"];
+  
+      // Faz o upload do arquivo para o servidor
+      move_uploaded_file($arquivo["tmp_name"], $caminho);
+  
+      // Insere as informações do documento no banco de dados
+      $nome = $_POST["nome"];
+      $data_up = $_POST["data_up"];
+      $id_usuario = $_SESSION["nome"];
+  
+      $conexao = mysqli_connect("localhost", "root", "", "gerenciamento_de_docs");
+      $query = "INSERT INTO documentos (nome, data_upload, id_usuario) VALUES ('$nome', '$data_up', $id_usuario)";
+      mysqli_query($conexao, $query);
+      mysqli_close($conexao);
+    }
+  }
+  
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
 
@@ -29,8 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
         $doc = new Documento();
         $doc->create([
             'nome' => $_POST['nome'],
-            'nomeDoc' => $nomeDoc,
-            'usuarios_id' => $_SESSION['nome'],
+            'id_usuario' => $_SESSION['nome'],
             'data' => $data_formatada
             ]);
           
