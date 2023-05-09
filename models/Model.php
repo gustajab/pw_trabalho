@@ -84,6 +84,7 @@ class Model
         $data['id'] = $id;
 
         $upd = $this->conex->prepare($sql);
+        $upd->bindParam(':id', $id); 
         $upd->execute($data);
     }
     private function map_fields($data){
