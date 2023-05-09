@@ -4,7 +4,8 @@ require('twig_carregar.php');
 require('func/sanitize_filename.php');
 require('func/verifica_nome_arquivo.php');
 require('verifica_sessao.php');
-
+require('models/Model.php');
+require('models/Documento.php');
 
 if(isset($_POST["enviar"])) {
     $arquivo = $_FILES["arquivo"];
