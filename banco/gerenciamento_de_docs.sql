@@ -18,11 +18,11 @@ USE `gerenciamento_de_docs` ;
 -- Table `gerenciamento_de_docs`.`usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`usuarios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id_usuario`))
 ENGINE = InnoDB;
 
 
@@ -30,15 +30,15 @@ ENGINE = InnoDB;
 -- Table `gerenciamento_de_docs`.`documentos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`documentos` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_documento` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `data_upload` DATE NOT NULL,
-  `usuarios_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_documentos_usuarios_idx` (`usuarios_id` ASC) VISIBLE,
+  `usuarios_id_usuario` INT NOT NULL,
+  PRIMARY KEY (`id_documento`),
+  INDEX `fk_documentos_usuarios_idx` (`usuarios_id_usuario` ASC) VISIBLE,
   CONSTRAINT `fk_documentos_usuarios`
     FOREIGN KEY (`usuarios_id`)
-    REFERENCES `gerenciamento_de_docs`.`usuarios` (`id`)
+    REFERENCES `gerenciamento_de_docs`.`usuarios` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -48,22 +48,22 @@ ENGINE = InnoDB;
 -- Table `gerenciamento_de_docs`.`compartilhamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`compartilhamento` (
-  `usuarios_id` INT NOT NULL,
-  `documentos_id` INT NOT NULL,
+  `usuarios_compartilhados_id` INT NOT NULL,
+  `documentos_compartilhados_id` INT NOT NULL,
   `visualizar` TINYINT NULL,
   `editar` TINYINT NULL,
   `excluir` TINYINT NULL,
-  PRIMARY KEY (`usuarios_id`, `documentos_id`),
-  INDEX `fk_usuarios_has_documentos_documentos1_idx` (`documentos_id` ASC) VISIBLE,
-  INDEX `fk_usuarios_has_documentos_usuarios1_idx` (`usuarios_id` ASC) VISIBLE,
+  PRIMARY KEY (`usuarios_compartilhados_id`, `documentos_compartilhados_id`),
+  INDEX `fk_usuarios_has_documentos_documentos1_idx` (`id_documento` ASC) VISIBLE,
+  INDEX `fk_usuarios_has_documentos_usuarios1_idx` (`id_usuario` ASC) VISIBLE,
   CONSTRAINT `fk_usuarios_has_documentos_usuarios1`
-    FOREIGN KEY (`usuarios_id`)
-    REFERENCES `gerenciamento_de_docs`.`usuarios` (`id`)
+    FOREIGN KEY (`usuarios_compartilhados_id`)
+    REFERENCES `gerenciamento_de_docs`.`usuarios` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_usuarios_has_documentos_documentos1`
-    FOREIGN KEY (`documentos_id`)
-    REFERENCES `gerenciamento_de_docs`.`documentos` (`id`)
+    FOREIGN KEY (`documentos_compartilhados_id`)
+    REFERENCES `gerenciamento_de_docs`.`documentos` (`id_documento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -41,7 +41,7 @@ class Model
     
     public function getById($id){
        
-        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE id = :id");
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE id_usuario = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);
@@ -79,11 +79,12 @@ class Model
 
         $sql = "UPDATE {$this->table}";
         $sql.= ' SET ' . $this->sql_fields($data);
-        $sql.= ' WHERE id = :id';
+        $sql.= ' WHERE id_usuario = :id';
 
         $data['id'] = $id;
 
         $upd = $this->conex->prepare($sql);
+        $upd->bindParam(':id', $id); 
         $upd->execute($data);
     }
     private function map_fields($data){
