@@ -1,5 +1,4 @@
 <?php
-class Documento extends Model
-{
+class Documento extends Model{
     
 }

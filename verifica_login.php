@@ -31,7 +31,7 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
             // verificar o resultado da consulta
             // iniciar a sessão do usuário
             session_start();
-            $_SESSION['nome'] = $result['nome'];
+            $_SESSION['id_usuario'] = $result['id_usuario'];
             echo "Login bem-sucedido!";
             header('location: listagem.php');
     die;

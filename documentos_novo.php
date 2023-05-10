@@ -12,7 +12,7 @@
 
         $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
         
-        $nomeDoc = 'uploads/'.$arquivo;
+        $caminho = 'uploads/'.$arquivo;
         
         move_uploaded_file($_FILES['arquivo']['tmp_name'], 'uploads/' . $arquivo);
 
@@ -23,9 +23,9 @@
         $doc = new Documento();
         $doc->create([
             'nome' => $_POST['nome'],
-            'nomeDoc' => $nomeDoc,
-            'usuarios_idusuarios' => $_SESSION['nome'],
-            'data' => $data_formatada
+            'caminho' => $caminho,
+            'usuarios_id' => $_SESSION['id_usuario'],
+            'data_upload' => $data_formatada
             ]);
           
             header('location: listagem.php');

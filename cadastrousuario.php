@@ -13,27 +13,44 @@ try {
     echo "Conexão falhou: " . $e->getMessage();
 }
 
-// Coleta os dados do formulário
-$nome = $_POST["nome"];
-$email = $_POST["email"];
-$senha = $_POST["senha"];
-
-// Verifica se a senha e a confirmação de senha são iguais
-if(empty($_POST['nome'])) {
-    echo "Por favor, preencha o campo nome.";
-}
-if(empty($_POST['email'])) {
-    echo "Por favor, preencha o campo Email.";
-}
-if(empty($_POST['senha'])) {
-    echo "Por favor, preencha o campo Senha.";
-} 
- if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    // passo 3: preparar a instrução SQL
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera os dados do formulário
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    
+    // Define uma variável para controlar erros
+    $erros = array();
+    
+    // Validação do campo nome
+    if (empty($nome)) {
+        $erros[] = "O campo nome é obrigatório.";
+        header('location: cadastro.php');
+        die;
+    }
+    
+    // Validação do campo email
+    if (empty($email)) {
+        $erros[] = "O campo e-mail é obrigatório.";
+        header('location: cadastro.php');
+        die;
+    } 
+    
+    // Validação do campo senha
+    if (empty($senha)) {
+        $erros[] = "O campo senha é obrigatório.";
+        header('location: cadastro.php');
+        die;
+    } 
+    
+    // Verifica se houve algum erro
+    if (count($erros) > 0) {
+        // Exibe os erros para o usuário
+        foreach ($erros as $erro) {
+            echo $erro . "<br>";
+        }
+    } else {
+         // passo 3: preparar a instrução SQL
     $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':email', $email);
@@ -46,7 +63,11 @@ if(empty($_POST['senha'])) {
     } catch(PDOException $e) {
         echo "Erro ao inserir registro: " . $e->getMessage();
     }
-}
-header('location: login.php');
+    }
+    header('location: login.php');
 die;
+}
+
+
+
 ?>

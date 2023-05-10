@@ -1,7 +1,6 @@
 <?php
 # models/Model.php 
-class Model 
-{
+class Model {
 
 
     // Não é a forma mais indicada de armazenar usuário e senha
