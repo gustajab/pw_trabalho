@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`documentos` (
   INDEX `fk_documentos_usuarios_idx` (`usuarios_id` ASC) VISIBLE,
   CONSTRAINT `fk_documentos_usuarios`
     FOREIGN KEY (`usuarios_id`)
-    REFERENCES `gerenciamento_de_docs`.`usuarios` (`id`)
+    REFERENCES `gerenciamento_de_docs`.`usuarios` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`compartilhamento` (
   `visualizar` TINYINT NULL,
   `editar` TINYINT NULL,
   `excluir` TINYINT NULL,
-  PRIMARY KEY (`usuarios_id`, `documentos_id`),
+  PRIMARY KEY (`usuarios_compartilhados_id`, `documentos_compartilhados_id`),
   INDEX `fk_usuarios_has_documentos_documentos1_idx` (`id_documento` ASC) VISIBLE,
   INDEX `fk_usuarios_has_documentos_usuarios1_idx` (`id_usuario` ASC) VISIBLE,
   CONSTRAINT `fk_usuarios_has_documentos_usuarios1`

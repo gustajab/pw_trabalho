@@ -14,8 +14,8 @@
         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
         {% for docs in doc %}
           <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-            <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documentos.php{{docs.id_documentos}}"><button class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">{{ docs.nome }}</button></a></td>
-            <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="usuario_apagar.php{{ docs.iddocumentos }}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Compartilhar</button></a><a href="usuario_apagar/{{ docs.iddocumentos }}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">apagar</button></a></td>
+            <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documentos.php?view={{docs.id_documento}}"><button class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">{{ docs.nome }}</button></a></td>
+            <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="usuario_apagar.php?view={{ docs.iddocumentos }}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Compartilhar</button></a><a href="usuario_apagar/{{ docs.iddocumentos }}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">apagar</button></a></td>
           </tr>
           
           {% endfor %}
