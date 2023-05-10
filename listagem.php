@@ -7,7 +7,7 @@
 
    
     $doc = new Documento();
-    $documentos = $doc->getALL(['id_usuario' => $_SESSION['nome']]);
+    $documentos = $doc->getALL(['usuarios_id' => $_SESSION['nome']]);
     echo $twig->render('listagem.html', [
         'doc' => $documentos,
         ]);
