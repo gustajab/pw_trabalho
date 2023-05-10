@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`usuarios` (
   `nome` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id_usuario`))
 ENGINE = InnoDB;
 
 
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`documentos` (
   `id_documento` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `data_upload` DATE NOT NULL,
-  `usuarios_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_documentos_usuarios_idx` (`usuarios_id` ASC) VISIBLE,
+  `usuarios_id_usuario` INT NOT NULL,
+  PRIMARY KEY (`id_documento`),
+  INDEX `fk_documentos_usuarios_idx` (`usuarios_id_usuario` ASC) VISIBLE,
   CONSTRAINT `fk_documentos_usuarios`
     FOREIGN KEY (`usuarios_id`)
     REFERENCES `gerenciamento_de_docs`.`usuarios` (`id_usuario`)

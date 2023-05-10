@@ -28,7 +28,7 @@
             'data' => $data_formatada
             ]);
           
-            header('location: documentos_lista.php');
+            header('location: listagem.php');
     }
     
 
