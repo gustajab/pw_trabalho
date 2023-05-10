@@ -32,6 +32,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`documentos` (
   `id_documento` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
+  `caminho` VARCHAR(255) NOT NULL,
   `data_upload` DATE NOT NULL,
   `usuarios_id` INT NOT NULL,
   PRIMARY KEY (`id_documento`),
