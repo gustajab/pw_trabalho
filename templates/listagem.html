@@ -21,11 +21,13 @@
 
             <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ docs.nome }}</a></td>
             <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+ 
               <a href="documentos_editar.php?view={{ docs.id_documento }}">
               <button class="bg-green-400 hover:bg-blue-700 text-white font-bold py-2 px-4">Editar</button></a>
               <a href="documentos_compartilhar.php?view={{ docs.id_documento }}">
               <button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4">Compartilhar</button></a>
               <a href="documentos_apagar.php?view={{ docs.id_documento }}">
+
                 <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Apagar</button></a></td>
 
           </tr>
