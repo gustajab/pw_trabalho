@@ -10,7 +10,6 @@
   <thead class="bg-gray-100 dark:bg-gray-700">
     <tr>
       <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700  dark:text-gray-400">Nome</th>
-      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700  dark:text-gray-400">Email</th>
       <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700  dark:text-gray-400">Autorizações</th>
     </tr>
   </thead>
@@ -18,7 +17,6 @@
   {% for usr in user %}
     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
       <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ usr.nome }}</td>
-      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ usr.email }}</td>
       <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="compartilhar.php?id={{usr.id_usuario}}&tipo=visualizar&documentos_compartilhados_id={{documentos_compartilhados_id}}"><button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4">Visualizar</button></a>
         <a href="compartilhar.php?id={{usr.id_usuario}}&tipo=alterar&documentos_compartilhados_id={{documentos_compartilhados_id}}"><button class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4">Alterar</button></a>
         <a href="compartilhar.php?id={{usr.id_usuario}}&tipo=excluir&documentos_compartilhados_id={{documentos_compartilhados_id}}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Apagar</button></a></td>    </tr>
