@@ -48,12 +48,13 @@ ENGINE = InnoDB;
 -- Table `gerenciamento_de_docs`.`compartilhamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gerenciamento_de_docs`.`compartilhamento` (
+  `id_compartilhamento` INT NOT NULL,
   `usuarios_compartilhados_id` INT NOT NULL,
   `documentos_compartilhados_id` INT NOT NULL,
   `visualizar` TINYINT NULL,
   `editar` TINYINT NULL,
   `excluir` TINYINT NULL,
-  PRIMARY KEY (`usuarios_compartilhados_id`, `documentos_compartilhados_id`),
+  PRIMARY KEY (`id_compartilhamento`, `usuarios_compartilhados_id`, `documentos_compartilhados_id`),
   CONSTRAINT `fk_usuarios_has_documentos_usuarios1`
     FOREIGN KEY (`usuarios_compartilhados_id`)
     REFERENCES `gerenciamento_de_docs`.`usuarios` (`id_usuario`)
