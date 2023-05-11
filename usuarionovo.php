@@ -1,5 +1,5 @@
 <?php
-require('verifica_sessao.php')
+require('verifica_sessao.php');
 require('models/Model.php');
 require('models/Usuario.php');
 
@@ -18,5 +18,3 @@ $usr->create([
 
 header('location: usuarios.php');
 
-
-?>
