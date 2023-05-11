@@ -1,0 +1,57 @@
+GERENCIAMENTO DE DOCUMENTOS
+permita o cadastro de usuários
+upload de documentos 
+compartilhamento de documentos com outros usuários (permitir que o usuário compartilhe seus
+documentos com outros usuários cadastrados no sistema, especificando quais
+usuários têm permissão para visualizar, editar ou excluir os documentos)
+busca de documentos por meio de filtros (filtrar por nome, data de upload, proprietário do
+documento, entre outros critérios)
+
+-------------------------------------------------------
+SUGESTÃO DO CHATGPT
+
+USUARIOS
+id pk
+nome
+email
+senha
+usuario
+
+DOCUMENTOS
+id
+id_usuario
+nome
+caminho
+data
+pk (id)
+foreign key (id_usuario) references usuarios(id)
+
+COMPARTILHAMENTOS
+id
+id_usuario_origem
+id_usuario_destino
+id_arquivo
+pk (id)
+fk (id_usuario_origem) references usuario(id),
+fk (id_usuario_destino) references usuarios(id)
+fk (id_arquivo) REFERENCES arquivos(id)
+
+FILTROS
+id
+id_usuario
+id_usuario INT UNSIGNED NOT NULL,
+nome
+data
+filtro
+PRIMARY KEY (id),
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+
+----------------------------------------------------
+
+PAGINAS
+
+pagina de login 
+pagina de cadastro
+pagina de listagem
+crud de arquivos
+
