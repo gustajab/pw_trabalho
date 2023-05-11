@@ -5,6 +5,7 @@
     require('func/verifica_nome_arquivo.php');
     require('models/Model.php');
     require('models/Documento.php');
+    require('func/function.php');
 
     $id = $_POST['id'] ?? $_GET['view'] ?? false;
     $tipo = $_POST['tipo'] ?? $_GET['tipo'] ?? false;
