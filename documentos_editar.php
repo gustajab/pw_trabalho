@@ -13,10 +13,8 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
 
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);
-
         $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
-        
-        $nomeDoc = 'uploads/'.$arquivo;
+        $caminho = 'uploads/'.$arquivo;
         
         move_uploaded_file($_FILES['arquivo']['tmp_name'], 'uploads/' . $arquivo);
 
@@ -26,23 +24,31 @@
 
         $doc = new Documento();
         $doc->create([
+
             'nome' => $_POST['nome'],
             'caminho' => $caminho,
-            'usuarios_id' => $_SESSION['user'],
+            'usuarios_id' => $_SESSION['id_usuario'],
             'data_upload' => $data_formatada
             ]);
           
             header('location: listagem.php');
     }else{
-    echo $twig->render('documentos_novo.html', ['tipo' => 'edicao']);
+
+    echo $twig->render('documentos_novo.html', ['tipo' => 'edita']);
+
 }}elseif($tipo == 'edita'){
+
     if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
+
         if($_FILES['arquivo']['name']){
+
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);
         $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
+        
         move_uploaded_file($_FILES['arquivo']['tmp_name'], 'uploads/' . $arquivo);
-        $nomeDoc = 'uploads/'.$arquivo;
-        }else{
+        $caminho = 'uploads/'.$arquivo;
+        
+    }else{
             $caminho = $_POST['caminho'];
         }
         $doc = new Documento();
