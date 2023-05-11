@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Titulo</title>
+    <title>Gerenciamento de Documentos</title>
 		<meta name="author" content="name">
     <meta name="description" content="description here">
 		<meta name="keywords" content="keywords,here">
@@ -21,18 +21,22 @@
 	<nav class="bg-gray-900 p-4 mt-0 w-full">
         <div class="container mx-auto flex items-center">
 		    <div class="flex text-white font-extrabold">
+
 				<a class="flex text-white text-base no-underline hover:text-white hover:no-underline" href="listagem.php"> 
 					👻 <span class="hidden w-0 md:w-auto md:block pl-1">Gerenciamento de documentos</span>
+
 				</a>
             </div>
 			<div class="flex pl-4 text-sm">
 				<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
 				  
 				  <li class="mr-2">
-					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="documentos_novo.php">Adicionar documento</a>
+					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="documentos_novo.php">Novo Documento</a>
 				  </li>
 				  <li class="mr-2">
+
 					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="#">Compartilhados</a>
+
 				  </li>
 					<li class="mr-2">
 					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="logout.php">Sair</a>
@@ -73,9 +77,6 @@
 	<div class="text-center pt-16 md:pt-32">
 		<h1 class="font-bold break-normal text-3xl md:text-5xl">{% block titulo %}{% endblock %}</h1>
 	</div>
-
-	<!--image-->
-	<div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('https://source.unsplash.com/collection/1118905/'); height: 50vh;"></div>
 	
 	<!--Container-->
 	<div class="container max-w-5xl mx-auto -mt-32">
