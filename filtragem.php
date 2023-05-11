@@ -2,33 +2,39 @@
 require('pdo.inc.php');
 require('twig_carregar.php');
 
-// Verifica se foi enviado um termo de pesquisa
-if (isset($_GET['barra_pesquisa'])) {
-    // Recebe o termo de pesquisa e remove espaços em branco extras
-    $barra_pesquisa = trim($_GET['barra_pesquisa']);
+// Configurações de conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gerenciamento_de_docs";
 
-    // Conecta-se ao banco de dados e executa a consulta
-    $conexao = new PDO('mysql:host=localhost;dbname=gerenciamento_de_docs', 'root', '');
-    $consulta = $conexao->prepare("SELECT * FROM documentos WHERE nome LIKE :item");
-    $consulta->bindValue(':item', "%$barra_pesquisa%", PDO::PARAM_STR);
-    $consulta->execute();
+// Obter o valor do campo de pesquisa
+$barra_pesquisa = $_POST['barra_pesquisa'];
 
-    // Recupera os resultados da pesquisa
-    $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+// Criar conexão com o banco de dados
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Exibe os resultados na página
-    if (count($resultados) > 0) {
-        foreach ($resultados as $resultado) {
-            echo $resultado['nome'] . "<br>";
-           
-        }
-    } else {
-        echo "Nenhum resultado encontrado.";
-    }
+// Verificar se a conexão foi estabelecida com sucesso
+if ($conn->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-header('location: listagem.php');
-die;
+// Consulta SQL para filtrar os registros pelo nome
+$sql = "SELECT * FROM documentos WHERE nome LIKE '%$barra_pesquisa%'";
 
+// Executar a consulta
+$result = $conn->query($sql);
 
+// Verificar se há resultados
+if ($result->num_rows > 0) {
+    // Exibir os resultados
+    while ($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id_documento"] . ", Nome: " . $row["nome"] . "<br>";
+    }
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
+// Fechar a conexão com o banco de dados
+$conn->close();
 
