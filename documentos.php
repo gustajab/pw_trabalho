@@ -8,7 +8,6 @@
 
 
 
-
     if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
 
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);

@@ -45,6 +45,14 @@ class Model {
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function delete($id){                                        
+        $sql = $this->conex->prepare("DELETE FROM {$this->table} WHERE id_documento = :id");
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+        return $sql->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create($data){
         // Inicia a construção do SQL
         $sql = "INSERT INTO {$this->table}";
