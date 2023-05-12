@@ -16,23 +16,9 @@
             'id_documento' => $id_documento,
             'usuarios_compartilhados_id' => $id,
             'visualizar' => '1',
-            'alterar' => '0',
             'excluir' => '0',
         ]);
             header('location: listagem.php');
-    }elseif($tipo == 'alterar'){
-
-
-      
-        $doc = new Compartilhamento();
-        $doc->create([
-            'id_documento' => $id_documento,
-            'usuarios_compartilhados_id' => $id,
-            'visualizar' => '1',
-            'alterar' => '1',
-            'excluir' => '0',
-        ]);
-        header('location: listagem.php');
     }elseif($tipo == 'excluir'){
      
           
@@ -41,7 +27,6 @@
             'id_documento' => $id_documento,
             'usuarios_compartilhados_id' => $id,
             'visualizar' => '1',
-            'alterar' => '1',
             'excluir' => '1',
         ]);
             header('location: listagem.php');
