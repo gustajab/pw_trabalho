@@ -8,18 +8,30 @@
         
         if (isset($_GET['id_documento'])) {
             $idDocumento = $_GET['id_documento'];
-            // Restante do código para buscar e exibir o documento específico
-        }
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $resultado = search($_POST['barra_pesquisa']);
-            echo $twig->render('usuarios_autorizados.html', [
-                'doc' => $resultado,
+            
+            $doc = new Documento();
+            $documento = $doc->getByID($idDocumento);
+            
+            if ($documento) {
+                echo $twig->render('usuarios_autorizados.html', [
+                    'doc' => [$documento],
                 ]);
-        }else{
-    
-        $doc = new Documento();
-        $documentos = $doc->getALL(['usuarios_id' => $_SESSION['id_usuario']]);
-        echo $twig->render('usuarios_autorizados.html', [
-            'doc' => $documentos,
-            ]);
+            } else {
+                echo "Documento não encontrado.";
+            }
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $resultado = search($_POST['barra_pesquisa']);
+                echo $twig->render('usuarios_autorizados.html', [
+                    'doc' => $resultado,
+                ]);
+            } else {
+                $doc = new Documento();
+                $documentos = $doc->getALL(['usuarios_id' => $_SESSION['id_usuario']]);
+                echo $twig->render('usuarios_autorizados.html', [
+                    'doc' => $documentos,
+                ]);
+            }
         }
+    ?>
+    
