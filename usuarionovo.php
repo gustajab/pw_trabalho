@@ -4,7 +4,7 @@ require('models/Model.php');
 require('models/Usuario.php');
 
 $nome = $_POST['nome'] ?? false;
-$senha = $_POST['pass'] ?? false;
+$senha = $_POST['senha'] ?? false;
 $email = $_POST['email'] ?? false;
 
 
