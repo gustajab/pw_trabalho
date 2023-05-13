@@ -5,7 +5,11 @@
         require('models/Documento.php');
         require('models/Usuario.php');
         require('func/pesquisar.php');
-    
+        
+        if (isset($_GET['id_documento'])) {
+            $idDocumento = $_GET['id_documento'];
+            // Restante do código para buscar e exibir o documento específico
+        }
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $resultado = search($_POST['barra_pesquisa']);
             echo $twig->render('usuarios_autorizados.html', [

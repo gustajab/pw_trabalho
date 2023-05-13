@@ -5,7 +5,6 @@
     require('models/Compartilhamento.php');
     require('models/Usuario.php');
 
-
     $id = $_GET['id'] ?? false;    
     $id_documento = $_GET['id_documento'] ?? false;
     $tipo = $_GET['tipo'] ?? false;
