@@ -5,7 +5,11 @@
     require('models/Compartilhamento.php');
     require('models/Usuario.php');
 
-
+    if (isset($_GET['id_documento'])) {
+        $idDocumento = $_GET['id_documento'];
+        // Restante do código para buscar e exibir o documento específico
+    }
+    
     $id = $_GET['id'] ?? false;    
     $id_documento = $_GET['id_documento'] ?? false;
     $tipo = $_GET['tipo'] ?? false;
