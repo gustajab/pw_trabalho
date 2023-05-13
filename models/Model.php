@@ -40,7 +40,7 @@ class Model {
     
     public function getById($id){
        
-        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE id_usuario = :id");
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE id_documento = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);

@@ -22,7 +22,7 @@
   {% for docs in doc %}
     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
       <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{docs.nome}}</td>
-      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documentos_download.php?id=1"><button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4">Visualizar</button></a>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documentos_download.php?view={{ docs.id_documento }}"><button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4">Visualizar</button></a>
         
         <a href="documentos_apagar.php?view={{ docs.id_documento }}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Apagar</button></a></td>    </tr>
 
