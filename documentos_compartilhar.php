@@ -37,7 +37,7 @@ else{
     
     echo $twig->render('usuarios.html', [
         'user' => $usuarios,
-        'id_documento' => $id_documento
+        'id' => $id_documento
         ]);
 
 }

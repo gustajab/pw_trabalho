@@ -7,7 +7,6 @@ require('models/Usuario.php');
 
 $user = new Usuario();
 $usuarios = $user->getAll();
-
 echo $twig->render('usuarios.html',[
     'nome' => $usuarios,
 ]);
